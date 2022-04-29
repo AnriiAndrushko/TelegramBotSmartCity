@@ -184,7 +184,7 @@ async Task<Message> ShowLeaderboard(User user, CancellationToken CST, StringBuil
     }
     return await botClient.SendPhotoAsync(
         chatId: user.chatId,
-        photo: Initer.photos[2],
+        photo: Initer.photos[0],
         caption: msg.ToString(),
         replyMarkup: replyKeyboardMarkup,
         cancellationToken: CST);
@@ -204,7 +204,7 @@ async Task<Message> ShowMenu(User user, CancellationToken CST, StringBuilder msg
 
     return await botClient.SendPhotoAsync(
         chatId: user.chatId,
-        photo: Initer.photos[2],
+        photo: Initer.photos[5],
         caption: msg.AppendLine("Меню:").ToString(),
         replyMarkup: replyKeyboardMarkup,
         cancellationToken: CST);

@@ -3,9 +3,12 @@
     public static class Initer
     {
         public static List<string> photos = new List<string>(){
-            "https://pngimg.com/uploads/anime_girl/anime_girl_PNG13.png",
-            "https://www.meme-arsenal.com/memes/c6dc216e2cf1d0689dd1d60afb430e93.jpg",
-            "https://img5.goodfon.ru/wallpaper/nbig/3/1d/anime-anime-girl-cute-girl.jpg",
+            "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo1.jpg",
+            "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo2.jpg",
+            "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo3.jpg",
+            "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo4.jpg",
+            "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo5.png",
+            "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo6.png",
         };
         public static List<Test> GetTests()
         {
@@ -25,14 +28,14 @@
 (@"some
 interesting
 facts: you are gay",
-photos[0]),
+photos[2]),
 //---------------------------------------------
 (@"bla bla
 blaaaaa", 
-photos[2]),
+photos[3]),
 //---------------------------------------------
 (@"Зап не убивает мух с 1 тычки", 
-photos[1]),
+photos[4]),
             };
         }
     }
