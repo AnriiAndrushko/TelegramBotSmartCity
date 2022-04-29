@@ -7,7 +7,12 @@ using bot;
 using System.Text;
 using Telegram.Bot.Types.ReplyMarkups;
 
-var botClient = new TelegramBotClient("5230690531:AAGevFSxL6gMRj27OfscBOxcWg9854bzTkc");
+
+
+Console.WriteLine("Enter bot token");
+string token;
+token = Console.ReadLine();
+var botClient = new TelegramBotClient(token);
 botClient.Timeout = TimeSpan.FromSeconds(15);
 using var cts = new CancellationTokenSource();
 Directory.CreateDirectory("databases");
