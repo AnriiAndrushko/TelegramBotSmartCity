@@ -243,7 +243,7 @@ async Task<Message> ShowCurrentTest(User user, CancellationToken CST, StringBuil
     public string Photo { get; private set; }
     private List<(int,string)> Answers;
 
-    public Test(string question, List<(int, string)> answers, int correctId, string photo)
+    public Test(string question, List<(int, string)> answers, int correctId, string photo = "")
     {
         CorrectAnswerId = correctId;
         Answers = answers; 
