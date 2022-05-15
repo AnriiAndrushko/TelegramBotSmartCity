@@ -65,7 +65,6 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
         case User.State.NotRegistered:
             curUser.Register();
             message.AppendLine("О, у нас новичек!");
-            message.AppendLine("Запишу тебя в пидорасы, но пока карандашем. Пройди тест и докажи что ты не педик!");
             await ShowMenu(curUser, cancellationToken, message);
             break;
         case User.State.InMenu:
@@ -243,7 +242,7 @@ async Task<Message> ShowCurrentTest(User user, CancellationToken CST, StringBuil
     public string Photo { get; private set; }
     private List<(int,string)> Answers;
 
-    public Test(string question, List<(int, string)> answers, int correctId, string photo = "")
+    public Test(string question, List<(int, string)> answers, int correctId, string photo)
     {
         CorrectAnswerId = correctId;
         Answers = answers; 

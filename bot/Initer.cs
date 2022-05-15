@@ -8,7 +8,7 @@
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo2.png",
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo3.png",
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo4.png",
-            "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo5.jpg",
+            "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo5.png",
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo6.jpg",
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo7.jpg",
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo8.jpg",
