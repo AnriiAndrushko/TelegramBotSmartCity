@@ -209,7 +209,7 @@ async Task<Message> ShowMenu(User user, CancellationToken CST, StringBuilder msg
 
     return await botClient.SendPhotoAsync(
         chatId: user.chatId,
-        photo: Initer.photos[5],
+        photo: Initer.photos[26],
         caption: msg.AppendLine("Меню:").ToString(),
         replyMarkup: replyKeyboardMarkup,
         cancellationToken: CST);
