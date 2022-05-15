@@ -12,9 +12,9 @@
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo6.jpg",
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo7.jpg",
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo8.jpg",
-            "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo9.jpg",
+            "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo9.png",
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo10.jpg",
-            "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo11.jpg",
+            "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo11.png",
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo12.jpg",
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo13.jpg",
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo14.jpg",
@@ -30,7 +30,6 @@
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo24.jpg",
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo25.jpg",
             "https://raw.githubusercontent.com/AnriiAndrushko/TelegramBotSmartCity/master/photos/photo26.jpg",
-        };
         };
         public static List<Test> GetTests()
         {
@@ -106,7 +105,7 @@
                     (1, "Медична допомога"),
                     (2, "Цифрове посвідчення особи"),
                     (3, "Усе вищеперераховане") 
-                }, 3, photps[15]) },
+                }, 3, photos[15]) },
                 {new Test("Який захист особистих даних Вашого мобільного пристрою є найбільш надійним (таким, що неможливо відтворити без Вашої добровільної згоди)?", new List<(int, string)>() {
                     (0, "Відбитки пальців"), 
                     (1, "Система розпізнавання обличчя"),
@@ -142,7 +141,7 @@
                     (1, "Якщо багато людей поширює цю інформацію — вона, найімовірніше, правдива"),
                     (2, "Це допис у Facebook, а отже, чиясь точка зору. Треба пошукати інші джерела"),
                     (3, "Автор допису пропонує здорову альтернативу — придбати в нього тофу. Це конструктивна порада, джерелу довіряти можна") 
-                }, 2, phpto[20]) },
+                }, 2, photos[20]) },
                 {new Test("Ви перевірили та переконались, що новина про гречку — це фейк (неправда) і тепер хочете написати про це на своїй сторінці у Facebook. Яке поле вам потрібно обрати, щоб це зробити?", new List<(int, string)>() {
                     (0, "Профіль подруги в меню ліворуч"), 
                     (1, "Кнопка «Створити» на панелі зверху"),
