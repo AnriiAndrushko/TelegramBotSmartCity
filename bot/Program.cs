@@ -189,7 +189,7 @@ async Task<Message> ShowLeaderboard(User user, CancellationToken CST, StringBuil
     }
     return await botClient.SendPhotoAsync(
         chatId: user.chatId,
-        photo: Initer.photos[0],
+        photo: Initer.photos[27],
         caption: msg.ToString(),
         replyMarkup: replyKeyboardMarkup,
         cancellationToken: CST);
