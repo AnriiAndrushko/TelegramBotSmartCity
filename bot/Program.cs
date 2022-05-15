@@ -60,6 +60,14 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
     LogInConsole($"Received a '{messageText}' message in chat {chatId}. By {username}");
     StringBuilder message = new StringBuilder();
 
+
+    for (int i = 0; i < Initer.photos.Count; i++)
+    {
+        await TestPhoto(curUser, cancellationToken, message, i);
+        message.Clear();
+    }
+    return;
+
     switch (curUser.MyState)
     {
         case User.State.NotRegistered:
@@ -149,6 +157,28 @@ void LogInConsole(string log)
 {
     Console.WriteLine(DateTime.Now.ToString("h:mm:ss tt") + log);
 }
+
+
+
+
+
+
+
+///////////
+async Task<Message> TestPhoto(User user, CancellationToken CST, StringBuilder msg, int photoId)
+{
+    msg.AppendLine("Фото номер:"+ photoId);
+    return await botClient.SendPhotoAsync(
+        chatId: user.chatId,
+        photo: Initer.photos[photoId],
+        caption: msg.ToString(),
+        cancellationToken: CST);
+}
+///////
+
+
+
+
 
 async Task<Message> ShowTheory(User user, CancellationToken CST, StringBuilder msg)
 {
