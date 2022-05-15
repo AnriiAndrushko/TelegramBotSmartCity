@@ -61,12 +61,12 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
     StringBuilder message = new StringBuilder();
 
 
-    for (int i = 0; i < Initer.photos.Count; i++)
-    {
-        await TestPhoto(curUser, cancellationToken, message, i);
-        message.Clear();
-    }
-    return;
+    //for (int i = 0; i < Initer.photos.Count; i++)
+    //{
+    //    await TestPhoto(curUser, cancellationToken, message, i);
+    //    message.Clear();
+    //}
+    //return;
 
     switch (curUser.MyState)
     {
