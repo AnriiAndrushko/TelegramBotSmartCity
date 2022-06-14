@@ -248,10 +248,14 @@ async Task<Message> ShowCurrentTest(User user, CancellationToken CST, StringBuil
 {
     Test test = user.GetCurrentTest();
 
-    ReplyKeyboardMarkup replyKeyboardMarkup = new(new[]
+    List<List<KeyboardButton>> buttons = new List<List<KeyboardButton>>();
+
+    foreach (KeyboardButton button in test.GetAnswers().Select(x => (KeyboardButton)x.Item2).Shuffle().ToArray())
     {
-        test.GetAnswers().Select(x => (KeyboardButton)x.Item2).Shuffle().ToArray(),
-    })
+        buttons.Add(new List<KeyboardButton>() { button });
+    }
+
+    ReplyKeyboardMarkup replyKeyboardMarkup = new(buttons)
     {
         ResizeKeyboard = true,
         OneTimeKeyboard = true
