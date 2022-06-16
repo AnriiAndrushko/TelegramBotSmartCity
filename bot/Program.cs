@@ -43,6 +43,8 @@ users.SaveToDatabase();
 // Send cancellation request to stop bot
 cts.Cancel();
 
+
+
 async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
 {
     // Only process Message updates: https://core.telegram.org/bots/api#message
@@ -72,22 +74,22 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
     {
         case User.State.NotRegistered:
             curUser.Register();
-            message.AppendLine("О, у нас новичек!");
+            message.AppendLine("О, в нас новенький!");
             await ShowMenu(curUser, cancellationToken, message);
             break;
         case User.State.InMenu:
             switch (messageText)
             {
-                case "Давай свой тест":
+                case "Пройти тест":
                     curUser.BeginTest(tests.GetRandomTests());
                     await ShowCurrentTest(curUser, cancellationToken, message);
 
                     break;
-                case "Почитать теорию":
+                case "Почитати теорію":
                     curUser.ReadTheory();
                     await ShowTheory(curUser, cancellationToken, message);
                     break;
-                case "Топ лучших":
+                case "Топ найкращих":
                     await ShowLeaderboard(curUser, cancellationToken, message);
                     break;
                 default:
@@ -98,22 +100,22 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
         case User.State.WaitingForAnswerToTest:
             if (curUser.MakeAnswer(messageText))
             {
-                message.AppendLine("Да, правильно, красава");
+                message.AppendLine("Так, правильно, молодець!");
             }
             else
             {
-                message.AppendLine("Нет, не угадал");
+                message.AppendLine("Нажаль не вгадав(");
             }
             if (curUser.MyState != User.State.WaitingForAnswerToTest)
             {
-                message.AppendLine("Твоя оценка: ").Append(curUser.CurrentScore).
+                message.AppendLine("Твоя оцінка: ").Append(curUser.CurrentScore).
                         Append("/").Append(curUser.TestNumber - 1).AppendLine();
                 highscore.AddNewHighscore(username, curUser.CurrentScore); //curUser.HighestScore
                 await ShowMenu(curUser, cancellationToken, message);
             }
             else
             {
-                message.AppendLine("Некст вопрос: ");
+                message.AppendLine("Наступне питання: ");
                 await ShowCurrentTest(curUser, cancellationToken, message);
             }
             break;
@@ -142,14 +144,13 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
 
 Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
 {
+    if (exception is RequestException) { return Task.CompletedTask; }
     var ErrorMessage = exception switch
     {
     ApiRequestException apiRequestException
             => $"Telegram API Error:\n[{apiRequestException.ErrorCode}]\n{apiRequestException.Message}",
-    Telegram.Bot.Exceptions.RequestException => $"Переподключаюсь...",
     _ => exception.ToString()
     };
-
     LogInConsole(ErrorMessage);
     return Task.CompletedTask;
 }
@@ -157,10 +158,6 @@ void LogInConsole(string log)
 {
     Console.WriteLine(DateTime.Now.ToString("h:mm:ss tt") + log);
 }
-
-
-
-
 
 
 
@@ -185,13 +182,13 @@ async Task<Message> ShowTheory(User user, CancellationToken CST, StringBuilder m
     int theoryPage = user.CurrentPage;
     ReplyKeyboardMarkup replyKeyboardMarkup = new(new[]
     {
-            new KeyboardButton[] { "Вернутся в меню", "⬅", "➡"},
+            new KeyboardButton[] { "Меню", "⬅", "➡"},
         })
     {
         ResizeKeyboard = true,
         OneTimeKeyboard = true
     };
-    msg.AppendLine("Страница номер: " + (theoryPage + 1));
+    msg.AppendLine("Сторінка номер: " + (theoryPage + 1));
     msg.AppendLine(theorys.GetPage(theoryPage).text);
     return await botClient.SendPhotoAsync(
         chatId: user.chatId,
@@ -205,13 +202,13 @@ async Task<Message> ShowLeaderboard(User user, CancellationToken CST, StringBuil
 {
     ReplyKeyboardMarkup replyKeyboardMarkup = new(new[]
     {
-            new KeyboardButton[] { "Вернутся в меню"},
+            new KeyboardButton[] { "Меню"},
         })
     {
         ResizeKeyboard = true,
         OneTimeKeyboard = true
     };
-    msg.AppendLine("Топ лучших:");
+    msg.AppendLine("Топ найкращих:");
     foreach (var score in highscore.GetHighscoreTable())
     {
         msg.AppendLine(score.Item1 + "    " + score.Item2 + "/" + highscore.maxScore);
@@ -228,7 +225,7 @@ async Task<Message> ShowMenu(User user, CancellationToken CST, StringBuilder msg
 {
     ReplyKeyboardMarkup replyKeyboardMarkup = new(new[]
     {
-            new KeyboardButton[] { "Давай свой тест", "Почитать теорию" , "Топ лучших"},
+            new KeyboardButton[] { "Пройти тест", "Почитати теорію" , "Топ найкращих"},
         })
     {
         ResizeKeyboard = true,
